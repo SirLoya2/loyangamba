@@ -34,6 +34,47 @@
 <!-- Style
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <style>
+  .fullscreen-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100;
+}
+
+.fullscreen-bg__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+    height: 300%;
+    top: -100%;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+    width: 300%;
+    left: -100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .fullscreen-bg {
+    background: url('../img/videoframe.jpg') center center / cover no-repeat;
+  }
+
+  .fullscreen-bg__video {
+    display: none;
+  }
+}
     #circle
 {
 margin-left: 10px; 
@@ -44,7 +85,6 @@ height:300px;
 
 
     body {
-        background-color: black;
         font-family:Source Sans Pro;
         font-weight:300;
         color: white;
@@ -86,16 +126,21 @@ height:300px;
     .backgroundgrey {
         background-color: grey;
     }
+
 </style>
 
 <!-- Body start
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </head>
 <body>
-  
-
+    <div class="fullscreen-bg">
+        <video loop muted autoplay poster="im.png" class="fullscreen-bg__video">
+            <source src="vid.mp4" type="video/mp4">
+        </video>
+    </div>
 <!-- Full Name
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<header class="viewport-header"></header>
 <div class="container">
     <div class="row">
         <div class="col-lg-8 mx-auto mt-10 my-5 text-center">
@@ -192,7 +237,6 @@ Contact Satyam (Developer) If u have any issues!</a><br>
 <!-- Javascript + Poppers
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-  
   
 
 <!-- End
